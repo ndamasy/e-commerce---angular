@@ -1,0 +1,9 @@
+
+.card:hover{
+    border-radius: 5px;
+    border: solid 1px #16A34A;   
+    transform: scale(1.05);
+    transition:all ease-in-out box-shadow 2s;
+    overflow: hidden;
+   cursor: pointer;
+}

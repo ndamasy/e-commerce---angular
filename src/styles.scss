@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+@import 'ngx-toastr/toastr';
+
+ul li a{
+    padding: 10px;
+    
+}
+
+.error{
+    border: solid 1px rgb(238, 94, 94);
+    color: red;
+   padding: 5px;
+   border-radius: 3px;
+   text-align: center;
+}
+.lable-text{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.search{
+    background-color: #16A34A;
+    color: white;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 6px 15px;
+    border-radius: 3px;
+}
+.search:hover{
+    cursor: pointer;
+    background-color: #42c472;
+}

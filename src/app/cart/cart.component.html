@@ -1,0 +1,54 @@
+<h1 class="text-center text-5xl text-green-600 p-4 mb-16">Shop Cart</h1>
+<section class="bg-slate-100 rounded shadow-md">
+    <div class="flex justify-between p-10">
+
+        <p class=" text-xl text-green-600 p-4">
+          Total cart price :
+          {{ cartProductDetails.totalCartPrice | currency : " EGP" }}
+        </p>
+       
+        <button (click)="clearCart()" class="bg-green-600 hover:bg-green-400  text-white text-xl ps-3 pe-3 pt-3 pb-3 rounded-lg">
+            Clear Cart
+          </button>
+    </div>
+  @for (item of cartProductDetails.products; track item.product.id) {
+
+ 
+    <div class="grid grid-cols-10 border-b-2  rounded-md ">
+
+      <div class="p-5">
+        <img
+          [src]="item.product.imageCover"
+          class="w-100"
+          [alt]="item.product.title"
+        />
+      </div>
+
+      <div class="col-span-9 flex justify-between items-center p-10">
+
+        <div>
+
+            <h3>{{ item.product.title }}</h3>
+            <p class="text-green-600">Price : {{ item.price }}</p>
+            <span class="text-green-600"
+              ><i class="fa-solid fa-trash" (click)="removeItem(item.product.id)"></i> Remove</span
+            >
+        </div>
+
+        <div >
+         <span (click)="updateCount(item.product.id , item.count+1) " class="text-green-600 text-xl"><i class="fa-solid fa-circle-plus " ></i></span>
+         <span class="text-green-600 text-xl">{{item.count}}</span>
+         <span (click)="updateCount(item.product.id , item.count-1) " class="text-green-600 text-xl"><i class="fa-solid fa-circle-minus"></i></span>
+        </div>
+
+      </div>
+    </div>
+
+  }
+  
+  
+</section>
+
+<button [routerLink]="['/order' , cartProductDetails._id]"    class="bg-green-600 hover:bg-green-400  text-white text-xl mt-8 ps-3 pe-3 pt-3 pb-3 rounded-lg">
+  Order now
+</button>

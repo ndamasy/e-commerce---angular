@@ -1,0 +1,30 @@
+<section>
+  <h2 class="text-center text-5xl text-green-600 p-4 mb-16 mt-20">
+    All Brands
+  </h2>
+  <div class="flex justify-center pt-10 pb-16 items-center">
+    <label for="search" class="search">Search </label>
+    <input
+      [(ngModel)]="text"
+      type="search"
+      class="rounded border w-2/4 px-3 py-2 my-2 border-zinc-300 ms-2"
+    />
+  </div>
+
+  <div class="md:container md:mx-auto grid grid-cols-6 gap-4">
+    @for (brand of brandsList | brand : text; track brand._id) {
+    <div class="p-2 card">
+      <div [routerLink]="['/brands/details', brand._id]">
+        <img [src]="brand.image" [alt]="brand.name" />
+        <h3 class="lable-text">{{ brand.name }}</h3>
+      </div>
+      <button
+        class="rounded bg-green-600 w-full p-2 lable-text"
+        
+      >
+        Check Brand
+      </button>
+    </div>
+    }
+  </div>
+</section>

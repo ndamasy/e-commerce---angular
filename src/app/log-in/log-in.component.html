@@ -1,0 +1,51 @@
+
+
+<h1 class="text-5xl text-green-600 p-4">Log in here</h1>
+
+
+<div class="mx-auto w-8/12 p-5 mt-5 rounded  bg-slate-200 mb-5 shadow-2xl">
+    <!-- @if(backendMsg!==null){
+        <h3 class="error">{{ backendMsg }}</h3>
+    } -->
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+
+    <label>Email:</label>
+    <input
+      formControlName="email"
+      type="email"
+      class="rounded border w-full px-3 py-2 my-2 border-zinc-300"
+    />
+    @if(loginForm.get('email')?.touched &&
+    loginForm.get('email')?.hasError('required')){
+    <p class="error">you should wright your email</p>
+    } @if(loginForm.get('email')?.touched &&
+    loginForm.get('email')?.hasError('email')){
+    <p class="error">you should use email formate</p>
+    }
+    
+    <label>Password:</label>
+    <input
+      formControlName="password"
+      type="password"
+      class="rounded border w-full px-3 py-2 my-2 border-zinc-300"
+    />
+    @if(loginForm.get('password')?.touched &&
+    loginForm.get('password')?.hasError('required')){
+    <p class="error">password required</p>
+    } @if(loginForm.get('password')?.touched &&
+    loginForm.get('password')?.hasError('minLength')){
+    <p class="error">password minLength 6 characters</p>
+    }
+
+    @if(loading){
+        <button class="rounded bg-green-600 px-3 py-2"><i class="fa-solid fa-spinner fa-spin"></i></button>
+    }@else{
+        <button class="rounded bg-green-600 px-3 py-2">log in</button>
+
+    }
+
+    <a routerLink="/forgetPassword" class="rounded bg-green-600 px-3 py-2 ms-3">Forget Password</a>
+    
+</form>
+
+</div>

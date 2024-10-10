@@ -1,0 +1,27 @@
+
+
+
+
+
+
+
+
+
+@if (brandDetails) {
+    <section>
+      <h1 class="text-5xl text-center mt-20 text-green-600 p-4">Brand Details</h1>
+      <div class="auto-rows-max">
+        <div class="grid grid-cols-3 gap-4 items-center">
+          <div class="">
+            <img [src]="brandDetails.image" class="w-full " />
+          </div>
+          <div class="col-span-2">
+            <h2 class="text-5xl text-center mt-20 text-green-600 p-4 ">{{ brandDetails?.name }}</h2>
+        
+           
+    
+          </div>
+        </div>
+      </div>
+    </section>
+    }

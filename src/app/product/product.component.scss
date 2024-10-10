@@ -1,0 +1,21 @@
+
+
+
+.card{
+    border-radius: 5px;
+    border: solid 1px #16A34A;   
+    transition: box-shadow .5s;
+    overflow: hidden;
+   }
+   
+   .card:hover{
+       box-shadow: 0 0 10px #11bd1168;
+   }
+   .card button{
+       transform: translateY(120%);
+       transition: transform .7s;
+   }
+   .card:hover button{
+       transform: translateY(0);
+   }
+   

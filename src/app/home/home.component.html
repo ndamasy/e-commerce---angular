@@ -1,0 +1,95 @@
+
+
+<!-- // slider  -->
+ <section>
+<div class="grid grid-cols-3">
+    <div class="col-span-2">
+        <div>
+            <owl-carousel-o [options]="customOptionsMain">
+                <ng-template carouselSlide >
+                    <img src="./assets/images/slider-image-3.jpeg" alt="" class="w-full h-80" > 
+                </ng-template>
+                <ng-template carouselSlide >
+                    <img src="./assets/images/slider-image-1.jpeg" alt="" class="w-full h-80" > 
+                </ng-template>
+                <ng-template carouselSlide >
+                    <img src="./assets/images/slider-image-2.jpeg" alt="" class="w-full h-80" > 
+                </ng-template>
+              
+              
+              </owl-carousel-o>
+        </div>
+    </div>
+    <div class="" >
+        <div>
+            <owl-carousel-o [options]="customOptionsMain">
+                <ng-template carouselSlide >
+                    
+                    <img src="./assets/images/grocery-banner.png" alt="" class="w-full h-40" > 
+                    <img src="./assets/images/grocery-banner-2.jpeg" alt="" class="w-full h-40" >  
+                </ng-template>
+              
+              </owl-carousel-o>
+        </div>
+    </div>
+</div>
+
+ </section>
+
+
+
+<!-- // owl slider section -->
+
+<section>
+    <h2 class="text-center text-5xl text-green-600 p-4 mb-16 ">Popular Categories</h2>
+
+    <owl-carousel-o [options]="customOptions">
+@for (cat of categryList; track cat._id) {
+    <ng-template carouselSlide >
+        <img [src]="cat.image" [alt]="cat.name" class="w-full" height="250px">
+        <h3>{{cat.name}}</h3>
+        
+      </ng-template>
+}
+    
+      </owl-carousel-o>
+</section>
+<div class="flex justify-center pt-20 pb-16 items-center">
+
+    <label for="search" class="search ">Search  </label>
+    <input [(ngModel)]="text" type="search" class="rounded border w-2/4 px-3 py-2 my-2 border-zinc-300 ms-2">
+</div>
+<!-- // popular product section -->
+
+<section>
+
+    <h2 class="text-center text-5xl text-green-600 p-4 mb-16 ">Popular Prouducts:</h2>
+    <div class="md:container md:mx-auto grid grid-cols-6 gap-4">
+
+    @for (product of HomeProductList.slice(0,12) | search : text; track product.id) {
+        <div class=" p-2 card">
+            <div [routerLink]="['/details' , product.id]" >
+                
+                <img [src]="product.imageCover" [alt]="product.title">
+                <h3 class="lable-text">{{product.category.name}}</h3>
+                <h4>{{product.title.split(' ' ,2).join(' ')}}</h4>
+                <div class="flex justify-between">
+                    <span>{{product.price}} EGP</span>
+                    <div>
+                        @for (num of [1,2,3,4,5].slice(0 , product.ratingsAverage); track $index) {
+    
+                            <span><i class="fas fa-star text-amber-400"></i></span>
+                        }
+                        @if (product.ratingsAverage % 1 !==0) {
+                            <span><i class="fa-solid fa-star-half-stroke  text-amber-400"></i></span>
+                        }
+                        <span class="text-slate-500">{{product.ratingsAverage}}</span>
+                    </div>
+                </div>
+            </div>
+            <button class="rounded bg-green-600 w-full p-2 lable-text" (click)="addToCart(product.id)">Add To Cart</button>
+        </div>
+    }
+        
+    </div>
+</section>

@@ -1,0 +1,24 @@
+
+
+
+
+<section>
+   <h1 class="text-center text-5xl text-green-600 p-4 mb-16 mt-32">All Categories</h1>
+   <div class="flex justify-center pt-10 pb-16 items-center">
+    <label for="search" class="search">Search  </label>
+    <input [(ngModel)]="text" type="search" class="rounded border w-2/4 px-3 py-2 my-2 border-zinc-300 ms-2">
+   </div>
+   <div class="md:container md:mx-auto grid grid-cols-6 gap-4">
+    @for (catego of categryList | categoSearch : text; track catego.id) {
+        <div class=" p-2 card">
+            <div [routerLink]="['/details' , catego.id]" >
+                
+                <img [src]="catego.image" [alt]="catego.title">
+                <h3 class="bg-green-500  rounded-md p-2 mt-10 text-center fs-2 lable-text ">{{catego.name}}</h3>
+            </div>
+            <!-- <button class="rounded border-green-600 w-full p-2" (click)="addToCart(catego.id)">Show Categry</button> -->
+        </div>
+
+    }
+   </div>
+</section>
